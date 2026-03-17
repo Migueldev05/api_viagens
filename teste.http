@@ -1,0 +1,7 @@
+### Variáveis de ambiente
+
+@base_url = http://127.0.0.1:8000
+
+### Teste de conexão com API 
+GET {{base_url}}/ HTTP/1.1
+Accept: application/json
