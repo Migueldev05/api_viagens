@@ -1,12 +1,14 @@
-from sqlalchemy import BigInteger, ForeignKey, Integer, DateTime, SmallInteger
-from sqlalchemy.orm import Mapped, MappedColumn
+from sqlalchemy import BigInteger, SmallInteger, DateTime, Float, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column
+
 from app.database import Base
 
-class pagamentos_model(Base):
-    __tablaname__ = "Pagamentos"
+class PagamentoModel(Base):
+    __tablename__ = "pagamento"
 
-    id_pagamentos: Mapped[int] = MappedColumn(BigInteger, Primary_key=True)
-    id_corrida: Mapped[int] = MappedColumn(BigInteger, ForeignKey=True, Unique=True)
-    valor: Mapped[int] = MappedColumn(Integer)
-    id_metodo_pagamento: Mapped[int] = MappedColumn(SmallInteger, ForeignKey=True, Unique=True)
-    datahora_transacao: Mapped[int] = MappedColumn(DateTime)
+    id_pagamento: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    id_corrida: Mapped[int] = mapped_column(BigInteger, ForeignKey('corrida.id_corrida', ondelete="CASCADE"), unique=True, nullable=False)
+    id_metodo_pagamento: Mapped[int] = mapped_column(SmallInteger, ForeignKey('metodo_pagamento.id_metodo_pagamento', ondelete="CASCADE"), unique=True, nullable=False)
+
+    valor: Mapped[int] = mapped_column("{:.2f}".format(Float), nullable=False)
+    datahora_transacao: Mapped[DateTime] = mapped_column(DateTime, nullable=False)

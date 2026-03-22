@@ -1,12 +1,11 @@
-from sqlalchemy.orm import MappedColumn, Mapped
-from app.database import Base
-from sqlalchemy import BigInteger, ForeignKey, Integer
-from decimal import Decimal
+from sqlalchemy import BigInteger, Float, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column
+from app.model.usuario import UsuarioModel
 
-class passageiro_model(Base):
-    __tablename__ = "Passageiro"
+class PassageiroModel(UsuarioModel):
+    __tablename__ = "passageiro"
 
-    id_passageiro: Mapped[int] = MappedColumn(Integer, Primary_Key=True,)
-    id_usuario: Mapped[int] = MappedColumn(BigInteger, ForeignKey=True, Unique=True)
-    media_avaliacap: Mapped[int] = MappedColumn(Integer)
-    
+    id_passageiro: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    id_usuario: Mapped[int] = mapped_column(BigInteger, ForeignKey('usuario.id_usuario', ondelete="CASCADE"), unique=True, nullable=False)
+
+    media_avaliacao: Mapped[float] = mapped_column("{:.1f}".format(Float))

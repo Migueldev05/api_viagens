@@ -1,10 +1,12 @@
-from sqlalchemy import String, BigInteger, Integer, VARCHAR
-from sqlalchemy.orm import Mapped, MappedColumn
+from sqlalchemy import Float, Integer, VARCHAR
+from sqlalchemy.orm import Mapped, mapped_column
+
 from app.database import Base
 
-class classe_model(Base):
-    __tablename__ = "Classe"
+class ClasseModel(Base):
+    __tablename__ = "classe"
 
-    id_classe: Mapped[int] = MappedColumn(Integer, primary_key=True)
-    nome_classe: Mapped[str] = MappedColumn(VARCHAR(45))
-    fator_preco: Mapped[int] = MappedColumn(Integer)
+    id_classe: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    
+    nome_classe: Mapped[str] = mapped_column(VARCHAR(45), nullable=False)
+    fator_preco: Mapped[int] = mapped_column("{:.2f}".format(Float), nullable=False)

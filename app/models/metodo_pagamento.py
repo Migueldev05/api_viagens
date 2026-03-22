@@ -1,10 +1,12 @@
 from sqlalchemy import VARCHAR, SmallInteger
-from sqlalchemy.orm import Mapped, MappedColumn
+from sqlalchemy.orm import Mapped, mapped_column
+
 from app.database import Base
 
-class metodo_pagamento_model(Base):
-    __tablename__ = "Metodo_Pagameto"
+class MetodoPagamentoModel(Base):
+    __tablename__ = "metodo_pagamento"
 
-    id_metodo_pagamento: Mapped[int] = MappedColumn(SmallInteger, Primary_key=True)
-    descricao: Mapped[str] = MappedColumn(VARCHAR(45))
-    nome_financeira: Mapped[str] = MappedColumn(VARCHAR(45))
+    id_metodo_pagamento: Mapped[int] = mapped_column(SmallInteger, primary_key=True, autoincrement=True)
+
+    descricao: Mapped[str] = mapped_column(VARCHAR(45))
+    nome_financeira: Mapped[str] = mapped_column(VARCHAR(45), nullable=False)

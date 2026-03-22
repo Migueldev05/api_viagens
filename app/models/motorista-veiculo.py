@@ -1,12 +1,12 @@
-from sqlalchemy.orm import MappedColumn, Mapped
+from sqlalchemy import BigInteger, ForeignKey, DateTime
+from sqlalchemy.orm import Mapped, mapped_column
 from app.database import Base
-from sqlalchemy import BigInteger, DateTime, ForeignKey, Integer, CHAR, SMALLINT, SmallInteger
-from decimal import Decimal
 
-class motorista_veiculo_model(Base):
-    __tablename__ = "Motorista_Veiculo"
+class MotoristaVeiculoModel(Base):
+    __tablename__ = "motorista_veiculo"
 
-    id_motorista: Mapped[int] = MappedColumn(Integer, Primary_key=True, ForeignKey=True)
-    id_veiculo: Mapped[int] = MappedColumn(Integer, Primary_key=True, ForeignKey=True)
-    datahora_inicio : Mapped[DateTime] = MappedColumn(DateTime)
-    datahora_fim : Mapped[DateTime] = MappedColumn(DateTime)
+    id_motorista: Mapped[int] = mapped_column(BigInteger, ForeignKey('motorista.id_motorista', ondelete="CASCADE"), primary_key=True, autoincrement=True)
+    id_veiculo: Mapped[int] = mapped_column(BigInteger, ForeignKey('veiculo.id_veiculo', ondelete="CASCADE"), primary_key=True, autoincrement=True)
+
+    datahora_disp: Mapped[DateTime] = mapped_column(DateTime)
+    datahora_indisp: Mapped[DateTime] = mapped_column(DateTime)
