@@ -2,7 +2,7 @@ from sqlalchemy import ForeignKey, Integer, VARCHAR, DateTime, Enum
 from sqlalchemy.orm import Mapped, MappedColumn
 from app.database import Base
 
-class modelo_veiculo_model(Base):
+class Modeloveiculomodel(Base):
     __tablename__ = "Modelo_Veiculo"
 
     id_modelo: Mapped[int] = MappedColumn(Integer, Primary_key=True)
