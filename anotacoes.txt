@@ -1,2 +1,10 @@
-Nullable -> Se for nulo, vai ter :v
-async def ->
+Mapped -> Indica que os atributos de uma classe é mapeado pelo ORM.
+mapped-column -> Função que define a coluna no banco de dados. Ela substitui
+ o a função antiga Column
+
+
+"Aqui temos uma aplicação em API, o conteúdo que estamos estudando à algumas 
+semanas. Essa aplicação simula o funcionamento de uma aplicativo de viagem, 
+assim como Uber, 99, e outros."
+
+"Em model, nos temos as tables do nosso projeto e podemos

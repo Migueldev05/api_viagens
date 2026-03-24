@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 
-from app.models.classe import ClasseModel
+from app.model.classe import ClasseModel
 from app.schema.classe import ClasseSchema
 
 
