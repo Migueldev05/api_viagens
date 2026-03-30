@@ -20,7 +20,7 @@ async def listar_avaliacoes(db: Session = Depends(get_db)):
 
 @avaliacao.delete("/avaliacoes/{id}/delete")
 async def deletar_avaliacao(id: int, db: Session = Depends(get_db)):
-    avaliacao = db.query(AvaliacaoModel).filter(AvaliacaoModel.id == id).first()
+    avaliacao = db.query(AvaliacaoModel).filter(AvaliacaoModel.id_avaliacao == id).first()
 
     if not avaliacao:
         raise HTTPException(
@@ -37,7 +37,7 @@ async def deletar_avaliacao(id: int, db: Session = Depends(get_db)):
 
 @avaliacao.put("/avaliacoes/{id}/update")
 async def atualizar_avaliacao(id: int, dados: AvaliacaoUpdateSchema, db: Session = Depends(get_db)):
-    avaliacao = db.query(AvaliacaoModel).filter(AvaliacaoModel.id == id).first()
+    avaliacao = db.query(AvaliacaoModel).filter(AvaliacaoModel.id_avaliacao == id).first()
 
     if not avaliacao:
         raise HTTPException(

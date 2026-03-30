@@ -1,31 +1,35 @@
 from typing import Optional
 from pydantic import BaseModel
-from sqlalchemy import Integer, SmallInteger, Enum, VARCHAR
+from enum import Enum
+
+class Propriedade(str, Enum):
+    alugado = "alugado"
+    proprio = "proprio"
 
 class ModeloSchema(BaseModel):
-    id_modelo: Integer
-    id_combustivel: Integer
+    id_modelo: int
+    id_combustivel: int
 
-    nome_modelo: VARCHAR
-    cor: VARCHAR
-    fabricante: VARCHAR
-    ano: SmallInteger
-    capacidade: SmallInteger
-    propriedade: Enum
+    nome_modelo: str
+    cor: str
+    fabricante: str
+    ano: int
+    capacidade: int
+    propriedade: Propriedade
 
     class Config:
         from_attributes = True
 
 class ModeloUpdateSchema(BaseModel):
-    id_modelo: Optional[Integer]
-    id_combustivel: Optional[Integer]
+    id_modelo: Optional[int]
+    id_combustivel: Optional[int]
 
-    nome_modelo: Optional[VARCHAR]
-    cor: Optional[VARCHAR]
-    fabricante: Optional[VARCHAR]
-    ano: Optional[SmallInteger]
-    capacidade: Optional[SmallInteger]
-    propriedade: Optional[Enum]
+    nome_modelo: Optional[str]
+    cor: Optional[str]
+    fabricante: Optional[str]
+    ano: Optional[int]
+    capacidade: Optional[int]
+    propriedade: Optional[Propriedade]
 
     class Config:
         from_attributes = True
