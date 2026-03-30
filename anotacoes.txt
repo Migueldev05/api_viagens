@@ -1,10 +1,28 @@
 Mapped -> Indica que os atributos de uma classe é mapeado pelo ORM.
-mapped-column -> Função que define a coluna no banco de dados. Ela substitui
- o a função antiga Column
+mapped-column -> Função que define a coluna no banco de dados. Ela substitui a função antiga "Column".
+------------------------------------------------------------------------------------------------------------------------------
+ORM -> ORM (Object-Relational Mapping) é uma técnica que permite interagir com o banco de dados usando código orientado a objetos, sem precisar escrever SQL diretamente.
 
+Ou seja, em vez de fazer consultas SQL manualmente, você manipula classes e objetos no código, e o ORM se encarrega de converter isso em comandos para o banco de dados.
 
-"Aqui temos uma aplicação em API, o conteúdo que estamos estudando à algumas 
-semanas. Essa aplicação simula o funcionamento de uma aplicativo de viagem, 
-assim como Uber, 99, e outros."
+De forma mais simples, o ORM faz a ponte entre SQL(Tabelas) e Python(classes), ou seja, uma Tabela vira uma Classe.
 
-"Em model, nos temos as tables do nosso projeto e podemos
+------------------------------------------------------------------------------------------------------------------------------
+
+Model -> A pasta que define como os dados são organizados e armazenados no banco de dados. Representa as entidades do sistema, como "usuario", "passageiro" ou "corrida", normalmente utilizando ORM's como SQLalchemy.
+    Ou seja:
+    • Cria as demais tables
+    • Salva no banco de dados
+
+------------------------------------------------------------------------------------------------------------------------------
+Schema -> Define como os dados entram e saem da API. Garante validação das informações recebidas e padroniza as respostas, geralmente utilizando Pydandic.
+
+------------------------------------------------------------------------------------------------------------------------------
+Route -> Contem as rotas da aplicação, ou seja, os endpoints que o usuario pode acessar. Também é onde as operações da API são definidas, como criar, listar, atualizar ou deletar dados. Em termos simples, é onde a aplicação interage com o usuario.
+
+------------------------------------------------------------------------------------------------------------------------------
+Comparação para ajudar
+
+models → estrutura do banco (onde salva)
+schemas → formato dos dados (o que entra/sai)
+routes → caminhos da API (onde acontece)
