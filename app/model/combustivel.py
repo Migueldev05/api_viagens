@@ -1,13 +1,11 @@
-from sqlalchemy import BigInteger, SmallInteger, DateTime
+from sqlalchemy import Integer, VARCHAR, Numeric
 from sqlalchemy.orm import Mapped, mapped_column
-
 from app.database import Base
 
-class AvaliacaoModel(Base):
-    __tablename__ = "avaliacao"
+class CombustivelModel(Base):
+    __tablename__ = "combustivel"
 
-    id_avaliacao: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    id_combustivel: Mapped[int] = mapped_column(Integer, primary_key=True, index=True, autoincrement=True)
 
-    nota_passageiro: Mapped[int] = mapped_column(SmallInteger)
-    nota_motorista: Mapped[int] = mapped_column(SmallInteger)
-    datahora_limite: Mapped[DateTime] = mapped_column(DateTime, nullable=False)
+    descricao: Mapped[str] = mapped_column(VARCHAR(45))
+    fator_carbono: Mapped[Numeric] = mapped_column(Numeric(10, 2), nullable=False)
